@@ -5,7 +5,11 @@ window.onload = function(){
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
     var arr = [];
-
+    
+    if (str === "" || str === null){
+        throw new Error("Du måste skriva något ord innan det går att omvandla");   
+    }
+    
     for (var i = 0; i <= str.length; i++){
         
         var character = str.charAt(i);
