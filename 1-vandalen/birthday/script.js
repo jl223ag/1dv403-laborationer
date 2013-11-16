@@ -4,10 +4,27 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
-		
+	
+        var userDate = new Date(date);
+        var now = new Date();
+        
+        userDate.setFullYear(now.getFullYear());
+        
+        var days = Math.ceil((userDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+        if (days < 0){
+            var nextYear = new Date();
+            nextYear.setFullYear(now.getFullYear() + 1);
+            days = (days * -1) + (nextYear.getTime() - now.getTime()) / (1000 * 60 * 60 * 24);
+        }
+
+    return days;
+	
+	
+	
+	
 
 
-			// Din kod här.
+	
 
 
 
