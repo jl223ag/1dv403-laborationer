@@ -27,7 +27,7 @@ window.onload = function(){
         var check2 = +thedate.substr(5,2);
         var check3 = +thedate.substr(8,2);
         
-        if (thedate.charAt(4) != "-" || thedate.charAt(7) != "-" || isNaN(check) || isNaN(check2) || isNaN(check3)){
+        if (thedate.charAt(4) != "-" || thedate.charAt(7) != "-" || isNaN(check) || isNaN(check2) || isNaN(check3)){ // använda typeof istället?
             
             throw new Error("Detta är inget giltigt datum mannen!");
         }

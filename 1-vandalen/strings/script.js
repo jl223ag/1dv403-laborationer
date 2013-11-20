@@ -24,7 +24,7 @@ window.onload = function(){
         }
     }
     
-    return arr.join("");
+    return arr.join("").toString();
 
 };
 	// ------------------------------------------------------------------------------
