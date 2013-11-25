@@ -13,9 +13,10 @@ Message.prototype.toString = function () {
 };
 
 Message.prototype.getHTMLText = function () {
-    return this.getText();
+    return querySelector("#theText").value;
 };
 
 Message.prototype.getDateText = function () {
-    return this.getDate();
+    var theDate = new Date();
+    return theDate;
 };

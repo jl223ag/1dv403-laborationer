@@ -26,11 +26,17 @@
     	</header>
         <main>
             <h1>Spel gjorda i javascript!</h1>
-            <h2>Labby Mezzage</h2>
-                        
+            <div id="mezzage">
+                <h2>Labby Mezzag<span class="red">e</span></h2>
+                <div id="theField">
+                    <p>Antal meddelanden: 0</p>
+                    <textarea cols="500" rows="10" id="theText"></textarea>
+                    <input type="button" value="skriv" id="button" onclick="sendMessage()">
+                </div>
+            </div><!--mezzage-->                        
         </main>
         <aside>
-            <h2 class="blogger">Blogginlägg <img src="pictures/penna.gif" alt="penna"></h3>
+            <h3 class="blogger">Blogginlägg <img src="pictures/penna.gif" alt="penna"></h3>
             <ul>
                 <li><a href="#post1">Tjenare världen</a></li>
                 <li><a href="#post2">Första svg bilden skapad</a></li>
@@ -45,7 +51,7 @@
                 <a href="#topline">Till toppen</a>
             </div><!--underdiv-->
             <div id="footer">
-                <p>Copyright &copy; Webbjocke 2013 - Alla rättigheter reserverade</p>
+                <p>Jocke</p>
             </div><!--footer-->
         </footer>    
     </body>
