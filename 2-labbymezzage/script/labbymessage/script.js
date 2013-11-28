@@ -19,52 +19,62 @@ Message.prototype.getHTMLText = function () {
 };
 
 Message.prototype.getDateText = function (now) {
+    return "Meddelandet skapades den " + now.toLocaleDateString() + " klockan " + now.toLocaleTimeString();
 };
 
 var labby = {
     count: 0,
-    messages: [],
-    countDisplayer: function (msgcount) {
+    messages: [], // arrayen som håller meddelandena
+    countDisplayer: function (msgcount) { // antal meddelanden
 
         msgcount = document.querySelector("#numberMessages");
         msgcount.innerHTML = "Antal meddelanden: " + labby.count;
     },    
-    removeMessage: function(messageId){
+    removeMessage: function(messageId){ // tar bort valda meddelandet
 
         labby.messages.splice(messageId, 1);
         labby.count--;
+        labby.renderMessages();
         labby.countDisplayer();
-        labby.renderMessages();        
     },
     renderMessage: function (messageId) { // skapar ett meddelande
-
+        console.log(labby.messages[messageId]);
         var wall = document.querySelector("#textWall");
         var div = document.createElement("div");
         var p = document.createElement("p");
         var a = document.createElement("a");
-        var ab = document.createElement("a");
+        var a2 = document.createElement("a");
         var clock = document.createElement("img");        
         var kill = document.createElement("img");
 
         a.setAttribute("href", "#");
         a.onclick = function () {
-            labby.removeMessage(messageId);
+            var conf = confirm("Vill du radera meddelandet?")
+            if (conf === true)
+            {
+                labby.removeMessage(messageId);
+            }
             return false;
-        }
-        ab.setAttribute("href", "#");
+        };
+        
+        a2.setAttribute("href", "#");
+        a2.onclick = function () {
+            var time = labby.messages[messageId].getDateText(labby.messages[messageId].getDate);
+            alert(time);
+            return false;
+        };
 
         clock.src = "pictures/clock.png";
         kill.src = "pictures/x.png";
 
         wall.appendChild(div);
         div.appendChild(p);
-        div.appendChild(ab);
+        div.appendChild(a2);
         div.appendChild(a);
         
-        p.innerHTML = labby.messages[messageId];
-        ab.appendChild(clock);
+        p.innerHTML = labby.messages[messageId].getText;
+        a2.appendChild(clock);
         a.appendChild(kill);
-        console.log(labby.messages[messageId]);
     },
     renderMessages: function () {
 
@@ -75,15 +85,16 @@ var labby = {
         }
     },
     run: function () {
-                      
-        var mess = new Message();
         var sendmsg = document.querySelector("#abutton");
-
         sendmsg.onclick = function () {
 
-            var input = document.querySelector("#theText").value;
-            labby.messages.push(input); // in med inputen i arrayen
+            var mess = new Message();
+            mess.getText = document.querySelector("#theText").value;
+            mess.getDate = new Date();
+            labby.messages.push(mess); // in med objektet i arrayen
+
             labby.count++;
+            mess.getText.value = "";
             labby.renderMessages();
             labby.countDisplayer();
         };
