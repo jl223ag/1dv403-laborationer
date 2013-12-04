@@ -1,17 +1,27 @@
-#textWall div .textTime{
+.textWall div .textTime{
     font-size: 0.7em;
     text-align: right;
     width: 100%;
     margin: 0;
 }
 #mezzage{
-    max-width: 650px;
+    max-width: 1300px;
     background-color: lightblue;
     padding: 2%;
-    clear: left;
+    float: left;
     margin: 0 auto;
     text-align: right;
     font-size: 1.2em;
+}
+#field1{
+    width: 49%;
+    float: left;
+    margin-right: 1%;
+}
+#field2{
+    width: 49%;
+    float: left;
+    margin-left: 1%;
 }
 #mezzage h2{
     text-align: center;
@@ -22,7 +32,7 @@
 .red{
     color: red;
 }
-#abutton{
+.abutton{
     width: 20%;
     height: 30px;
     font-size: 1em;
@@ -33,11 +43,7 @@
     font-family: inherit;
     font-size: inherit;
 }
-#theField{
-    background-color: white;
-    padding: 2%;
-}
-#textWall div {
+.textWall div {
     padding: 0 1%;
     margin-bottom: 5px;
     background-color: lightgreen;
@@ -47,12 +53,12 @@
     float: left;
     width: 98%;
 }
-#textWall div p{
+.textWall div p{
     margin: 10px 0 0 0;
     float: left;
     width: 86%;
 }
-#textWall div a{
+.textWall div a{
     float: left;
     width: 5%;
     margin: 7px 0 0 2%;

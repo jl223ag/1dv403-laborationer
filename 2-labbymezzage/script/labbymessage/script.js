@@ -1,70 +1,85 @@
 "use strict";
 
-var labby = {
-    
-    count: 0,
-    messages: [], // arrayen som håller meddelandena
+function labby (msgId) {
 
-    run: function () {
-        var field = document.querySelector("#theText");
-        field.onkeypress = function (e) {
-            if (!e) { var e = window.event; }
-            if ((e.keyCode === 13) && (!e.shiftKey)) {
-                e.preventDefault();
-                sendmsg.onclick();
-            }
-        };
+    var count = 0;
+    var messages = []; // arrayen som håller meddelandena
+    var msgcount = document.createElement("p");
+    msgcount.className = "numberMessages";
+    msgcount.innerHTML = "Antal meddelanden: 0";
 
-        var sendmsg = document.querySelector("#abutton");
-        sendmsg.onclick = function () {
+    var theDiv = document.getElementById(msgId);    
+    var textwall = document.createElement("div");
+    textwall.className = "textWall";
 
-            var mess = new Message();
-            mess.getText = document.querySelector("#theText").value;
-            mess.getDate = new Date();
-            labby.messages.push(mess); // in med objektet i arrayen
+    var field = document.createElement("textarea");
+    field.rows = 10;
+    field.cols = 500;
+    field.className = "theText";
+    field.onkeypress = function (e) {
+        if (!e) { var e = window.event; }
+        if ((e.keyCode === 13) && (!e.shiftKey)) {
+            e.preventDefault();
+            sendmsg.onclick();
+        }
+    };
 
-            labby.count++;
-            labby.renderMessages();
-            labby.countDisplayer();
-            field.value = "";
-        };
-    },
-    countDisplayer: function (msgcount) { // antal meddelanden
+    theDiv.appendChild(msgcount);
+    theDiv.appendChild(textwall);
+    theDiv.appendChild(field);
 
-        msgcount = document.querySelector("#numberMessages");
-        msgcount.innerHTML = "Antal meddelanden: " + labby.count;
-    },    
-    removeMessage: function(messageId){ // tar bort valda meddelandet
+    var sendmsg = document.createElement("button"); // skapa skickaknapp
+    sendmsg.innerHTML = "skriv";
+    sendmsg.className = "abutton";
+    theDiv.appendChild(sendmsg);
 
-        labby.messages.splice(messageId, 1);
-        labby.count--;
-        labby.renderMessages();
-        labby.countDisplayer();
-    },
-    renderMessage: function (messageId) { // skapar ett meddelande
-        console.log(labby.messages[messageId]);
-        var wall = document.querySelector("#textWall");
+    sendmsg.onclick = function () {
+        var mess = new Message();
+        mess.getText = field.value;
+        mess.getDate = new Date();
+        messages.push(mess); // in med objektet i arrayen
+
+        count++;
+        renderMessages();
+        countDisplayer();
+        field.value = "";
+        console.log(count);
+    };
+
+    function countDisplayer () { // antal meddelanden
+        
+        msgcount.innerHTML = "Antal meddelanden: " + count;
+    };
+
+    function removeMessage (messageId){ // tar bort valda meddelandet
+
+        messages.splice(messageId, 1);
+        count--;
+        renderMessages();
+        countDisplayer();
+    };
+
+    function renderMessage(messageId) { // skapar ett meddelande
+        
         var div = document.createElement("div");
         var p = document.createElement("p");
         var p2 = document.createElement("p");
         var a = document.createElement("a");
         var a2 = document.createElement("a");
-        var clock = document.createElement("img");        
+        var clock = document.createElement("img");
         var kill = document.createElement("img");
-
-        a.setAttribute("href", "#");
+        a.href = "#";
         a.onclick = function () {
             var conf = confirm("Vill du radera meddelandet?")
-            if (conf === true)
-            {
-                labby.removeMessage(messageId);
+            if (conf === true) {
+                removeMessage(messageId);
             }
             return false;
         };
-        
-        a2.setAttribute("href", "#");
+
+        a2.href = "#";
         a2.onclick = function () {
-            var time = labby.messages[messageId].getDateText(labby.messages[messageId].getDate);
+            var time = messages[messageId].getDateText(messages[messageId].getDate);
             alert(time);
             return false;
         };
@@ -72,26 +87,31 @@ var labby = {
         clock.src = "pictures/clock.png";
         kill.src = "pictures/x.png";
 
-        wall.appendChild(div);
+        textwall.appendChild(div);
         div.appendChild(p);
         div.appendChild(a2);
         div.appendChild(a);
         div.appendChild(p2);
-        
-        p.innerHTML = labby.messages[messageId].getHTMLText(labby.messages[messageId].getText);
+
+        p.innerHTML = messages[messageId].getHTMLText(messages[messageId].getText);
         a2.appendChild(clock);
         a.appendChild(kill);
-        p2.setAttribute("class", "textTime");
-        p2.innerHTML = labby.messages[messageId].getDate.toLocaleTimeString();
-    },
-    renderMessages: function () {
+        p2.className = "textTime";
+        p2.innerHTML = messages[messageId].getDate.toLocaleTimeString();
+    };
 
-        document.querySelector("#textWall").innerHTML = ""; // tar bort alla meddelanden
+    function renderMessages() {
 
-        for (var i = 0; i < labby.messages.length; i++) { // skriver ut dem på nytt
-            labby.renderMessage(i);
+        textwall.innerHTML = ""; // tar bort alla meddelanden
+
+        for (var i = 0; i < messages.length; i++) { // skriver ut dem på nytt
+            renderMessage(i);
         }
-    }
+    };
 };
 
-window.onload = labby.run;
+window.onload = function () {
+    
+    new labby("field1");
+    new labby("field2");
+}
