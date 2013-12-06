@@ -56,19 +56,19 @@ var RandomGenerator = {
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------
 var memory = {
+    theArray: [],
     run: function () {
-        memory.theArray = RandomGenerator.getPictureArray(2, 4);
+        
+        memory.theArray = RandomGenerator.getPictureArray(4, 4);
+               
         console.log(memory.theArray);
         memory.makeTable();
 
-    },
-    theArray: [],
+    },    
     makeTable: function () {
 
         var board = document.querySelector("#memory");
         var memoryBoard = document.createElement("div");
-        var image;
-        var a;
 
         if (memory.theArray.length === 8) {
             memoryBoard.className = "smallMemory";
@@ -80,15 +80,36 @@ var memory = {
         board.appendChild(memoryBoard);
 
         for (var i = 0; i < memory.theArray.length; i++) {
-
-            a = document.createElement("a");
-            image = document.createElement("img");
-            image.src = "pics/" + memory.theArray[i] + ".png";
-
-            memoryBoard.appendChild(a);
-            a.appendChild(image);
+            createImages(memory.theArray[i]);
         }
+
+        function createImages(nr) {
+
+            var atag = document.createElement("a");
+            atag.href = "#";
+            atag.className = nr;
+
+            var image = document.createElement("img");
+            image.src = "pics/0.png";
+
+            atag.onclick = function () {
+                memory.flipImages(atag, image);
+                return false;
+            };
+
+            memoryBoard.appendChild(atag);
+            atag.appendChild(image);
+
+        };
+    },
+    flipImages: function () {
+
+        var newImg = document.createElement("img");
+        newImg.src = "pics/" + nr + ".png";
+        atag.replaceChild(newImg, image);
+
     }
+
 
 };
 window.onload = memory.run;
