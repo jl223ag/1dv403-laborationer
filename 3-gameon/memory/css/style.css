@@ -155,17 +155,19 @@ figcaption{
     display: none;
 }
 #memory{
-    width: 20%;
+    width: 250px;
     height: 250px;
     clear: left;
     margin: 0 auto;
-    background-color: red;
-    padding: 2% 0 2% 5%;
+    border: 5px double black;
+    background-image: -webkit-linear-gradient(lightgray 0%, white 100%);
+    background-image: linear-gradient(lightgray 0%, white 100%);
+    padding: 2% 0 2% 3%;
 }
 #memory a{
     display: block;
     float: left;
-    margin: 0 1%;
+    margin: 0 2%;
 }
 #memory img{
     width: 40px;
@@ -175,6 +177,12 @@ figcaption{
 }
 #memory .smallMemory :nth-child(2n+3){
     clear: left;
+}
+#big, #small{
+    font-family: inherit;
+    font-size: 20px;
+    width: 90px;
+    margin-top: 1%;
 }
 @media screen and (max-width: 920px){
     aside{
