@@ -5,32 +5,37 @@ var MemoryApp = {
     theArray: [],
     playArray: [],
     gameCount: 0,
-    playCount: 0,
+    playCount: 0, // för att köra play funktionen när 2 bilder är klickade
+    failCount: 0,
+    successCount: 0,
     amountCount: 0,
 
     init: function () {                
-        var big = document.querySelector("#big");
-        var small = document.querySelector("#small");
-        var board = document.querySelector("#memory");
+        var big, small, board, game;
+
+        big = document.querySelector("#big");
+        small = document.querySelector("#small");
+        board = document.querySelector("#memory");
 
         big.onclick = function () {
             MemoryApp.reset(board);
-            var game = new Memory(4, 4, board);
+            game = new Memory(4, 4, board);
             game.start();
         };
         small.onclick = function () {
             MemoryApp.reset(board);
-            var game = new Memory(2, 4, board);
+            game = new Memory(2, 4, board);
             game.start();
         };
-
     },
     
     makeTable: function (board) { // bygger upp bordet med bilder osv
 
-        var memoryBoard = document.createElement("div");
-        var cardArray = [];
-        var imageCount = 0;
+        var memoryBoard, cardArray, imageCount;
+
+        memoryBoard = document.createElement("div");
+        cardArray = [];
+        imageCount = 0;
 
         if (MemoryApp.theArray.length === 8) { // enbart för css
             memoryBoard.className = "smallMemory";
@@ -46,46 +51,44 @@ var MemoryApp = {
         }
 
         function createImages(imageNr) {
+            var atag, image, newImg;
 
-            var atag = document.createElement("a");
+            atag = document.createElement("a");
             atag.href = "#";
             atag.className = imageNr;
-
-            var image = document.createElement("img");
+            image = document.createElement("img");
             image.src = "pics/0.png";
 
             memoryBoard.appendChild(atag);
             atag.appendChild(image);
 
-
             atag.onclick = function () {
                 if (MemoryApp.playCount < 2) {
                     try {
-                        var newImg = document.createElement("img");
+                        newImg = document.createElement("img");
                         newImg.src = "pics/" + imageNr + ".png";
                         atag.replaceChild(newImg, image);
                         MemoryApp.playCount++;
                         MemoryApp.play(atag, newImg, image);
-                        return false;
                     }
                     catch (Exception) {
-                        console.log("Du har redan klickat på den här brickan");
+                        console.log("Den här brickan är redan klickad");
                     }
                 }
+                return false;
             };
-
         };
-
     },
 
     play: function (atag, newImg, image) {
         MemoryApp.playArray.push(atag, newImg, image); // sparar atag + båda bilderna i en array
+        var failCount, successCount, win;
+
+        failCount = document.querySelector("#anotherAmount");
+        successCount = document.querySelector("#amount");
 
         if (MemoryApp.playCount >= 2) {
-
-            MemoryApp.amountCount++;
-            var p = document.querySelector("#amount");
-            p.innerHTML = "Antal försök: " + MemoryApp.amountCount;
+            MemoryApp.amountCount++;            
 
             if (MemoryApp.playArray[0].className !== MemoryApp.playArray[3].className) { // om det är 2 olika bilder
 
@@ -95,32 +98,43 @@ var MemoryApp = {
                     }
                     MemoryApp.playArray.splice(0, 6);
                     MemoryApp.playCount = 0;
+                                        
                 }, 700);
-
+                MemoryApp.failCount++;                
+                failCount.innerHTML = "Misslyckade försök: " + MemoryApp.failCount;
             }
             else {
                 MemoryApp.gameCount++;
+                MemoryApp.successCount++;
                 MemoryApp.playArray.splice(0, 6);
-                MemoryApp.playCount = 0;
+                MemoryApp.playCount = 0;                
+                successCount.innerHTML = "Hittade: " + MemoryApp.successCount;
             }
 
             if (MemoryApp.gameCount === (MemoryApp.theArray.length / 2)) {
-
-                var win = document.querySelector("#victory");
+                win = document.querySelector("#victory");
                 win.innerHTML = "Grattis du klarade det på " + MemoryApp.amountCount + " försök!!!!";
             }
         }
     },
 
     reset: function (board) { // resettar allt för ett nytt spel
-        var win = document.querySelector("#victory");
-        var p = document.querySelector("#amount");
+        var win, sucessCount, failCount;
+
+        win = document.querySelector("#victory");
+        sucessCount = document.querySelector("#amount");
+        failCount = document.querySelector("#anotherAmount");
+
         win.innerHTML = "";
-        p.innerHTML = "Antal försök: 0";
+        failCount.innerHTML = "Misslyckade försök: 0";
+        sucessCount.innerHTML = "Hittade: 0";
         board.innerHTML = "";
+        
         MemoryApp.amountCount = 0;
         MemoryApp.gameCount = 0;
         MemoryApp.playCount = 0;
+        MemoryApp.failCount = 0;
+        MemoryApp.successCount = 0;
         MemoryApp.theArray.splice(0, MemoryApp.theArray.length);
         MemoryApp.playArray.splice(0, MemoryApp.playArray.length)
     }

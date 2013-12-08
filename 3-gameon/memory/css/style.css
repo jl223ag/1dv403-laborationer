@@ -178,6 +178,9 @@ figcaption{
 #memory .smallMemory :nth-child(2n+3){
     clear: left;
 }
+.smallMemory{
+    margin-left: 50px;
+}
 #big, #small{
     font-family: inherit;
     font-size: 20px;
