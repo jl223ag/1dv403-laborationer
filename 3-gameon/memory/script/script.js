@@ -63,17 +63,12 @@ var MemoryApp = {
             atag.appendChild(image);
 
             atag.onclick = function () {
-                if (MemoryApp.playCount < 2) {
-                    try {
-                        newImg = document.createElement("img");
-                        newImg.src = "pics/" + imageNr + ".png";
-                        atag.replaceChild(newImg, image);
-                        MemoryApp.playCount++;
-                        MemoryApp.play(atag, newImg, image);
-                    }
-                    catch (Exception) {
-                        console.log("Den här brickan är redan klickad");
-                    }
+                if ((MemoryApp.playCount < 2) && (atag.firstChild !== newImg)) { // klickar man på en bild som redan är uppvänd händer ingenting
+                    newImg = document.createElement("img");
+                    newImg.src = "pics/" + imageNr + ".png";
+                    atag.replaceChild(newImg, image);
+                    MemoryApp.playCount++;
+                    MemoryApp.play(atag, newImg, image);                    
                 }
                 return false;
             };
