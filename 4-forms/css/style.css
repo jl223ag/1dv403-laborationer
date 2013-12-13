@@ -1,0 +1,255 @@
+article, aside, figure, footer, header, hgroup,
+menu, nav, section{ 
+    display: block; 
+}
+#form1{
+    margin: 0 auto;
+    max-width: 500px;
+    text-align: left;
+    font-size: 1.2em;
+}
+#submit{
+    width: 100px;
+    margin-top: 4%;
+    background-image: -webkit-linear-gradient(white 10%, lightgreen 120%);
+    background-image: linear-gradient(white 10%, lightgreen 120%);
+}
+#submit:hover{
+    cursor: pointer;
+    background-image: -webkit-linear-gradient(white 10%, lightblue 120%);
+    background-image: linear-gradient(white 10%, lightblue 120%);
+}
+fieldset{
+    padding: 4%;
+    background-image: -webkit-linear-gradient(white 10%, lightblue 100%);
+    background-image: linear-gradient(white 10%, lightblue 100%);
+}
+legend{
+    background-color: white;
+    font-size: 1.3em;
+}
+label, select, input{
+    display: block;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+}
+body{
+	margin: 0;
+	padding: 0;
+	line-height: 1.9em;
+    font-family: 'Rokkitt', serif;
+}
+h1, h2, h3, h4{
+    font-family: 'Belleza', sans-serif;
+}
+h1{
+    display: block;
+    text-align: center;
+    padding-top: 2%;
+}
+img, video, svg{
+    max-width: 100%;
+    height: auto;
+	border: 0;
+}
+figure{
+    margin-left: 0;
+}
+header{
+    width: 100%;
+    height: 250px;
+    float: left;
+	background-image: -webkit-linear-gradient(black 10%, gray 100%);
+    background-image: linear-gradient(black 10%, gray 100%);
+}
+#wrapper a{
+    text-decoration: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    color: #2716B3;
+}
+#wrapper a:visited{
+    color: purple;
+}
+#wrapper a:hover{
+    color: #9805E6;
+    text-decoration: underline;
+}
+#topline{
+    width: 100%;
+    height: 45px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+}
+#banner{
+    max-width: 960px;
+    height: 100px;
+    margin: 60px auto 0 auto;
+}
+#menubar{
+	width: 100%;
+	height: 50px;
+    background-color: rgba(0,0,0,0.6);
+}
+nav{
+	clear: left;
+    max-width: 960px;
+    height: 50px;
+    margin: 40px auto 0 auto;
+	text-align: center;
+}
+nav a{
+	display: block;
+	width: 80px;
+	height: 38px;
+	padding: 12px 5px 0px 5px;
+	float: left;
+	font-size: 1.2em;
+	color: white;
+	text-decoration: none;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+nav a:hover, #underdiv a:hover{
+    text-decoration: underline;
+    background-color: white;
+    color: black;
+}
+nav .current{
+    -webkit-transition: all 0.3s;
+	transition: all 0.3s;
+    background-color: white;
+    color: black;
+}
+main{
+    width: auto;
+    clear: left;
+	padding: 0 2% 20px 2%;
+	margin-right: 140px;
+	text-align: center;
+}
+aside{
+    width: 140px;
+    position: absolute;
+	top: 370px;
+	right: 0;
+	padding: 12px 2% 20px 2%;
+}
+article{
+    width: 250px;
+    float: left;
+}
+article a{
+    display: block;
+}
+aside ul{
+	padding-left: 2%;
+	list-style-type: square;	
+}
+#underdiv{
+    width: 100%;
+    clear: left;
+    height: 130px;
+    background-image: -webkit-linear-gradient(gray 0%, black 100%);
+    background-image: linear-gradient(gray 0%, black 100%);
+    text-align: center;
+}
+#underdiv a{
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+#footer{
+    width: 100%;
+    position: relative;
+    height: 30px;
+    background-color: black;
+}
+#footer p{
+	margin: 0;
+	color: white;
+	text-align: center;
+}
+.photobox{
+    float: right;
+    text-align: right;
+    margin-left: 2%;
+}
+figcaption{
+    font-size: 12px;
+    margin-top: 0;
+}
+#secondsidebar{
+    display: none;
+}
+@media screen and (max-width: 920px){
+    aside{
+        position: relative;
+        float: left;
+        width: 92%;
+        padding: 0 4% 0 4%;
+        margin-top: 0;
+    }
+    aside li{
+        width: 90%;
+        border-bottom: 1px solid #2716B3;
+    }
+    aside ul{
+        list-style-type: none;
+        padding-left: 0;
+        margin-right: 5px;
+    }
+    aside img{
+        display: none;
+    }
+    .photobox{
+        width: 143px;
+    }
+    .sidebars{
+        width: 48%;
+        float: left;
+    }
+    .blogger{
+        margin-bottom: 30px;
+    }
+    aside h3{
+        margin-top: 10px;
+    }
+    main{
+        width: 92%;
+        padding: 0 4% 0 4%;
+    }
+    aside a{
+        display: block;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 320px){    
+	#underdiv{
+        height: 80px;
+    }
+    #wrapper{
+        margin-top: 210px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
