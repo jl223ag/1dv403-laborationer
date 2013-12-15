@@ -4,25 +4,31 @@ menu, nav, section{
 }
 #form1{
     margin: 0 auto;
-    max-width: 500px;
+    max-width: 600px;
     text-align: left;
     font-size: 1.2em;
+}
+#form1 p{
+    float: left;
 }
 #submit{
     width: 100px;
     margin-top: 4%;
-    background-image: -webkit-linear-gradient(white 10%, lightgreen 120%);
-    background-image: linear-gradient(white 10%, lightgreen 120%);
+    background-image: -webkit-linear-gradient(white 10%, orange 120%);
+    background-image: linear-gradient(white 10%, orange 120%);
 }
 #submit:hover{
     cursor: pointer;
-    background-image: -webkit-linear-gradient(white 10%, lightblue 120%);
-    background-image: linear-gradient(white 10%, lightblue 120%);
+    background-image: -webkit-linear-gradient(white 10%, aqua 120%);
+    background-image: linear-gradient(white 10%, aqua 120%);
 }
 fieldset{
     padding: 4%;
-    background-image: -webkit-linear-gradient(white 10%, lightblue 100%);
-    background-image: linear-gradient(white 10%, lightblue 100%);
+    border: 0;
+}
+input:focus, select:focus{
+    border-color: aqua;
+    box-shadow: 0px 0px 3px aqua;
 }
 legend{
     background-color: white;
@@ -30,9 +36,19 @@ legend{
 }
 label, select, input{
     display: block;
-    width: 100%;
+    width: 70%;
     font-family: inherit;
-    font-size: inherit;
+    font-size: inherit;    
+}
+.fail{
+    border-color: red;
+    box-shadow: 0px 0px 3px red;
+    color: red;
+}
+.win{
+    border-color: green;
+    box-shadow: 0px 0px 3px green;
+    color: green;
 }
 body{
 	margin: 0;

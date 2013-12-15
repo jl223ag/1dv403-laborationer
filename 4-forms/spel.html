@@ -24,17 +24,17 @@
     	</header>
         <main>
             <h1>Labb 4 - forms!</h1>
-            <form id="form1" method="post">
+            <form id="form1" method="post" action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php">
                 <fieldset>
                     <legend>Fyll i uppgifterna här</legend>
-                    <label for="fname">Förnamn</label>
-                    <input type="text" name="fname">
-                    <label for="lname">Förnamn</label>
-                    <input type="text" name="lname">
+                    <label for="firstname">Förnamn</label>
+                    <input type="text" name="firstname"><p id="firstname"></p>
+                    <label for="lastname">Förnamn</label>
+                    <input type="text" name="lastname"><p id="lastname"></p>
                     <label for="boxnumber">Postnummer</label>
-                    <input type="number" name="boxnumber">
+                    <input type="number" name="boxnumber"><p id="boxnumber"></p>
                     <label for="email">Epost</label>
-                    <input type="email" name="email">
+                    <input type="email" name="email"><p id="email"></p>
                     <label for="pricemodel">Prismodell</label>
                     <select name="pricemodel">
                         <option>låg</option>
