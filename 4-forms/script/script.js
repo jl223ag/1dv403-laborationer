@@ -33,7 +33,8 @@ var Validate = {
 
         sub.onclick = function () {
             if (first.className === "win" && last.className === "win" && boxnr.className === "win" && email.className === "win") {
-                popup();                
+                popup();
+                
             }
             return false;
         };
@@ -98,7 +99,9 @@ var Validate = {
         };
 
         var popup = function () { // bygger upp popup fönstret
+            var megadiv = document.createElement("div");
             var div = document.createElement("div");
+            megadiv.className = "megadiv";
             div.className = "popup";
 
             var top = document.createElement("div");
@@ -121,8 +124,9 @@ var Validate = {
             var cancel = document.createElement("button");
             var cancelText = document.createTextNode("Avbryt");
             var confirmButton = document.createElement("button");
-            var confirmButtonText = document.createTextNode("Bekräfta köp");
+            var confirmButtonText = document.createTextNode("Bekräfta");
 
+            document.body.appendChild(megadiv);
             document.body.appendChild(div);
             div.appendChild(top);
             top.appendChild(xButton);
@@ -149,16 +153,19 @@ var Validate = {
             cancel.appendChild(cancelText);
 
             xButton.onclick = function () {
+                document.body.removeChild(megadiv);
                 document.body.removeChild(div);
                 return false;
             };
             cancel.onclick = function () {
+                document.body.removeChild(megadiv);
                 document.body.removeChild(div);
             };
-            confirmButton.onclick = function () { // här submittas formen
+            confirmButton.onclick = function () { 
+                document.body.removeChild(megadiv);
                 document.body.removeChild(div);
-                form.submit();
-            };            
+                form.submit(); // här submittas formen
+            };
         };
     }
 }
