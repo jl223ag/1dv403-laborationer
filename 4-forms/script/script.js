@@ -2,7 +2,7 @@
 
 var Validate = {
     run: function () {
-        var form = document.querySelector("#form1"); // hämtar ut formelementen
+        var form = document.querySelector("#form1"); // hÃ¤mtar ut formelementen
         var sub = document.querySelector("#theButton");
         var first = form.elements["firstname"];
         var last = form.elements["lastname"];
@@ -11,8 +11,8 @@ var Validate = {
         var pricemodel = form.elements["pricemodel"];
 
         form.reset(); // resettar alla inputfields vid laddning av sidan
-
-        var firstnamePtag = document.querySelector("#firstname"); // hämtar ptaggarna och skapar en node för varje
+        
+        var firstnamePtag = document.querySelector("#firstname"); // hÃ¤mtar ptaggarna och skapar en node fÃ¶r varje
         var firstText = document.createTextNode("");
         var lastnamePtag = document.querySelector("#lastname");
         var lastText = document.createTextNode("");
@@ -21,7 +21,7 @@ var Validate = {
         var emailPtag = document.querySelector("#email");
         var emailText = document.createTextNode("");
 
-        firstnamePtag.appendChild(firstText); // lägg till noderna i ptaggarna
+        firstnamePtag.appendChild(firstText); // lÃ¤gg till noderna i ptaggarna
         lastnamePtag.appendChild(lastText);
         boxPtag.appendChild(boxText);
         emailPtag.appendChild(emailText);
@@ -33,24 +33,29 @@ var Validate = {
 
         sub.onclick = function () {
             if (first.className === "win" && last.className === "win" && boxnr.className === "win" && email.className === "win") {
-                popup();
-                
+                popup();                
             }
             return false;
         };
 
-        var checkName = function (name, secondname, text, secondText) { // kollar för och efternamn      
+        var checkName = function (name, secondname, text, secondText) { // kollar fÃ¶r och efternamn
+            var namePattern = /\d/;
+
             if (name.value === "") {
                 name.className = "fail";
                 text.nodeValue = "Kan inte vara tom";
             }
+            else if (name.value.match(namePattern)) {
+                name.className = "fail";
+                text.nodeValue = "Siffror i ditt namn?";
+            }
             else if (name.value === secondname.value) {
                 name.className = "fail";
                 secondname.className = "fail";
-                text.nodeValue = "samma för och efternamn";
-                secondText.nodeValue = "samma för och efternamn";
+                text.nodeValue = "Samma fÃ¶r och efternamn";
+                secondText.nodeValue = "Samma fÃ¶r och efternamn";
             }
-            else if ((name.value !== secondname.value) && (name.value !== "") && (secondname.value !== "")) {
+            else if ((name.value !== secondname.value) && (name.value !== "") && (secondname.value !== "") && (!name.value.match(namePattern)) && (!secondname.value.match(namePattern)))  {
                 name.className = "win";
                 secondname.className = "win";
                 text.nodeValue = "";
@@ -64,7 +69,7 @@ var Validate = {
 
         var checkBoxNr = function () { // kollar postnummer
             var boxPattern = /^([se]{2}\s?)?[\d]{3}[\-\s]?[\d]{2}$/i;
-            var numberPattern = /[a-z]|\-|\s/;
+            var numberPattern = /[a-z]|\-|\s/i;
             var numberArray = [];
 
             if (boxnr.value.match(boxPattern)) {
@@ -86,7 +91,7 @@ var Validate = {
         };
 
         var checkEmail = function () { // kollar email
-            var emailPattern = /^(?!\.)(\w|-|\.|#){1,64}(?!\.)@(?!\.)[-.a-zåäö0-9]{4,253}$/i;
+            var emailPattern = /^(?!\.)(\w|-|\.|#){1,64}(?!\.)@(?!\.)[-.a-zÃ¥Ã¤Ã¶0-9]{4,253}$/i;
 
             if (email.value.match(emailPattern)) {
                 email.className = "win";
@@ -98,7 +103,7 @@ var Validate = {
             }
         };
 
-        var popup = function () { // bygger upp popup fönstret
+        var popup = function () { // bygger upp popup fÃ¶nstret
             var megadiv = document.createElement("div");
             var div = document.createElement("div");
             megadiv.className = "megadiv";
@@ -110,9 +115,9 @@ var Validate = {
             xButton.href = "#";
             var xButtonText = document.createTextNode("X");
             var header = document.createElement("h2");
-            var headerText = document.createTextNode("Vänligen godkänn ditt köp");
+            var headerText = document.createTextNode("VÃ¤nligen godkÃ¤nn ditt kÃ¶p");
             var p1 = document.createElement("p");
-            var p1Text = document.createTextNode("Förnamn:\t" + first.value);
+            var p1Text = document.createTextNode("FÃ¶rnamn:\t" + first.value);
             var p2 = document.createElement("p");
             var p2Text = document.createTextNode("Efternamn:\t" + last.value);
             var p3 = document.createElement("p");
@@ -124,7 +129,7 @@ var Validate = {
             var cancel = document.createElement("button");
             var cancelText = document.createTextNode("Avbryt");
             var confirmButton = document.createElement("button");
-            var confirmButtonText = document.createTextNode("Bekräfta");
+            var confirmButtonText = document.createTextNode("BekrÃ¤fta");
 
             document.body.appendChild(megadiv);
             document.body.appendChild(div);
@@ -164,7 +169,7 @@ var Validate = {
             confirmButton.onclick = function () { 
                 document.body.removeChild(megadiv);
                 document.body.removeChild(div);
-                form.submit(); // här submittas formen
+                form.submit(); // hÃ¤r submittas formen
             };
         };
     }
