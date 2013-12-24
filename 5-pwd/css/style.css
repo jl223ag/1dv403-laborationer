@@ -7,6 +7,18 @@ body{
 	padding: 0;
     background-image: url(../pictures/background.jpg);
 }
+.aWindowSmall{
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    position: fixed;
+    left: 150px;
+    bottom: -30px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    z-index: 1;
+    cursor: pointer;
+}
 main{
     width: 100%;
     height: 200px;
@@ -23,9 +35,12 @@ footer a{
     width: 50px;
     height: 50px;
     float: left;
+    -webkit-transition: all 0.3s;
     transition: all 0.3s;
 }
 footer a:hover{
+    -ms-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
     transform: scale(1.5);
     background: radial-gradient(ellipse at center,  lightgreen 30%, transparent 60%);
     
@@ -36,12 +51,14 @@ img{
     border: 0;
 }
 .aWindow{
-    width: 300px;
+    width: 350px;
     height: 400px;
     position: absolute;
     top: 5px;
     left: 5px;
-    background-color: white;
+    background-color: rgba(255,255,255,0.6);
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
 }
 .aWindow img{
     width: 40px;
@@ -50,7 +67,8 @@ img{
 .windowTop{
     width: 100%;
     height: 40px;
-    background-color: brown;
+    background-color: rgba(0,0,0,0.8);
+    color: white;
 }
 .windowTop p{
     float: left;
@@ -60,8 +78,8 @@ img{
     text-align: center;
     float: left;
     width: 30px;
-    height: 20px;
-    padding: 0 0 10px 0;
+    height: 12px;
+    padding: 0 0 16px 0;
     border: 1px solid black;
     font-size: 1.2em;
     text-decoration: none;
@@ -71,7 +89,7 @@ img{
     cursor: pointer;
 }
 .minimize{
-    margin-left: 108px;
+    margin-left: 158px;
 }
 .windowBody{
     height: 320px;
@@ -82,7 +100,9 @@ img{
     height: 36px;
     width: 100%;
     float: left;
-    background-color: brown;
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    
 }
 .windowBottom p{
     margin-top: 0;
