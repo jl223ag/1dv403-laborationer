@@ -1,25 +1,26 @@
 ﻿"use strict";
 
-var createWindow = function (text, imagesrc) {
+JOCKE.CreateWindow = function (text, imagesrc) {
+    var aWindow, windowTop, windowBody, windowBottom, topImg, pTop, pBottom, aMin, aClose, main;
 
-    var aWindow = document.createElement("div");
-    var windowTop = document.createElement("div");
-    var windowBody = document.createElement("div");
-    var windowBottom = document.createElement("div");
+    aWindow = document.createElement("div");
+    windowTop = document.createElement("div");
+    windowBody = document.createElement("div");
+    windowBottom = document.createElement("div");
     aWindow.className = "aWindow";
     windowTop.className = "windowTop";
     windowBody.className = "windowBody";
     windowBottom.className = "windowBottom";
 
-    var topImg = document.createElement("img");
+    topImg = document.createElement("img");
     topImg.src = imagesrc;
 
-    var pTop = document.createElement("p");
-    var pBottom = document.createElement("p");
+    pTop = document.createElement("p");
+    pBottom = document.createElement("p");
     pTop.innerHTML = text;
 
-    var aMin = document.createElement("a");
-    var aClose = document.createElement("a");
+    aMin = document.createElement("a");
+    aClose = document.createElement("a");
     aMin.className = "minimize";
     aMin.innerHTML = "-";
     aClose.className = "close";
@@ -39,7 +40,7 @@ var createWindow = function (text, imagesrc) {
         }
     };
 
-    var main = document.querySelector("main");
+    main = document.querySelector("main");
     main.appendChild(aWindow);
     aWindow.appendChild(windowTop);
     windowTop.appendChild(topImg);
@@ -50,5 +51,5 @@ var createWindow = function (text, imagesrc) {
     aWindow.appendChild(windowBottom);
     windowBottom.appendChild(pBottom);
 
-    return [windowBody, pBottom];
+    return [windowBody, windowBottom];
 };

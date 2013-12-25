@@ -7,17 +7,21 @@ body{
 	padding: 0;
     background-image: url(../pictures/background.jpg);
 }
-.aWindowSmall{
-    width: 60px;
-    height: 60px;
-    overflow: hidden;
-    position: fixed;
-    left: 150px;
-    bottom: -30px;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
-    z-index: 1;
-    cursor: pointer;
+.displayer{
+    position: absolute;
+    top: 30px;
+    left: 400px;
+    padding: 0 0 10px 0;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+}
+.displayer a{
+    float: right;
+}
+footer img{
+    width: 100%;
+    height: auto;
+    border: 0;
 }
 main{
     width: 100%;
@@ -42,16 +46,10 @@ footer a:hover{
     -ms-transform: scale(1.5);
     -webkit-transform: scale(1.5);
     transform: scale(1.5);
-    background: radial-gradient(ellipse at center,  lightgreen 30%, transparent 60%);
-    
-}
-img{
-    width: 100%;
-    height: auto;
-    border: 0;
+    background: radial-gradient(ellipse at center,  lightgreen 30%, transparent 60%);    
 }
 .aWindow{
-    width: 350px;
+    width: 345px;
     height: 400px;
     position: absolute;
     top: 5px;
@@ -60,7 +58,19 @@ img{
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
 }
-.aWindow img{
+.aWindowSmall{
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    position: fixed;
+    left: 150px;
+    bottom: -30px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    z-index: 1;
+    cursor: pointer;
+}
+.windowTop img{
     width: 40px;
     float: left;
 }
@@ -89,12 +99,24 @@ img{
     cursor: pointer;
 }
 .minimize{
-    margin-left: 158px;
+    margin-left: 153px;
 }
 .windowBody{
     height: 320px;
-    width: 100%;
+    width: 335px;
+    padding-left: 10px;
     float: left;
+    overflow: scroll;
+}
+.windowBody div{
+    margin: 10px 10px 10px 0;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.8);
+    float: left;
+}
+.windowBody div:hover{
+    cursor: pointer;
 }
 .windowBottom{
     height: 36px;
