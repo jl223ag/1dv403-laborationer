@@ -1,8 +1,9 @@
 ﻿"use strict";
 
-JOCKE.CreateWindow = function (text, imagesrc) {
-    var aWindow, windowTop, windowBody, windowBottom, topImg, pTop, pBottom, aMin, aClose, main;
+JOCKE.CreateWindow = function (text, imagesrc, x, y, count) {
+    var main, aWindow, windowTop, windowBody, windowBottom, topImg, pTop, pBottom, aMin, aClose;
 
+    main = document.querySelector("main");
     aWindow = document.createElement("div");
     windowTop = document.createElement("div");
     windowBody = document.createElement("div");
@@ -16,7 +17,6 @@ JOCKE.CreateWindow = function (text, imagesrc) {
     topImg.src = imagesrc;
 
     pTop = document.createElement("p");
-    pBottom = document.createElement("p");
     pTop.innerHTML = text;
 
     aMin = document.createElement("a");
@@ -28,6 +28,7 @@ JOCKE.CreateWindow = function (text, imagesrc) {
 
     aMin.onclick = function () {
         aWindow.className = "aWindowSmall";
+        removeCssStyles();
         return false;
     };
     aClose.onclick = function () {
@@ -37,19 +38,36 @@ JOCKE.CreateWindow = function (text, imagesrc) {
     topImg.onclick = function () {
         if (aWindow.className === "aWindowSmall") {
             aWindow.className = "aWindow";
+            someCssStyles();
         }
     };
 
-    main = document.querySelector("main");
+    someCssStyles();
+    
     main.appendChild(aWindow);
     aWindow.appendChild(windowTop);
     windowTop.appendChild(topImg);
     windowTop.appendChild(pTop);
-    windowTop.appendChild(aMin);
     windowTop.appendChild(aClose);
+    windowTop.appendChild(aMin);
     aWindow.appendChild(windowBody);
     aWindow.appendChild(windowBottom);
-    windowBottom.appendChild(pBottom);
 
     return [windowBody, windowBottom];
+
+    function someCssStyles() {
+        aWindow.style.width = x + "px";
+        aWindow.style.height = y + "px";
+        aWindow.style.left = count[0] + "px";
+        aWindow.style.top = count[1] + "px";
+        aWindow.style.bottom = "";
+    };
+
+    function removeCssStyles() {
+        aWindow.style.width = "60px";
+        aWindow.style.height = "60px";
+        aWindow.style.left = "150px";
+        aWindow.style.bottom = "-30px";
+        aWindow.style.top = "";
+    };
 };

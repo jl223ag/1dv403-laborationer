@@ -6,6 +6,7 @@ JOCKE.TheAjax = function (url, imgHolder, callback) {
     xhr = new XMLHttpRequest();
     loadImg = document.createElement("img");
     loadImg.src = "pictures/ajax.gif";
+    var time = new Date();
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 1) {            
@@ -23,7 +24,9 @@ JOCKE.TheAjax = function (url, imgHolder, callback) {
             else {
                 console.log("Ett fel inträffade " + xhr.status);
             }
+            var time2 = new Date();
             imgHolder.removeChild(loadImg);
+            imgHolder.innerHTML = "Laddade bilderna på: " + ((time2.getTime() - time.getTime()) / 1000) + "sekunder";
         }
     };
 
