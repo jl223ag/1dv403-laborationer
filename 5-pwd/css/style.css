@@ -48,6 +48,9 @@ footer a:hover{
     transform: scale(1.5);
     background: radial-gradient(ellipse at center,  lightgreen 30%, transparent 60%);    
 }
+#focused{
+    z-index: 5;
+}
 .aWindow{
     position: absolute;
     -webkit-transition: all 0.3s;
@@ -113,7 +116,8 @@ footer a:hover{
 }
 .windowBottom{
     height: 30px;
-    width: 100%;
+    width: 96%;
+    padding-left: 4%;
     float: left;
     background-color: rgba(0,0,0,0.8);
     color: white;

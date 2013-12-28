@@ -26,6 +26,14 @@ JOCKE.CreateWindow = function (text, imagesrc, x, y, count) {
     aClose.className = "close";
     aClose.innerHTML = "x";
 
+    aWindow.tabIndex = "1"; // för att focus/blur ska funka
+
+    aWindow.onfocus = function () {
+        aWindow.id = "focused";
+    };
+    aWindow.onblur = function () {
+        aWindow.id = "";
+    };
     aMin.onclick = function () {
         aWindow.className = "aWindowSmall";
         removeCssStyles();
@@ -61,6 +69,7 @@ JOCKE.CreateWindow = function (text, imagesrc, x, y, count) {
         aWindow.style.left = count[0] + "px";
         aWindow.style.top = count[1] + "px";
         aWindow.style.bottom = "";
+
     };
 
     function removeCssStyles() {
