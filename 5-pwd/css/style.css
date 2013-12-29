@@ -1,22 +1,46 @@
-﻿article, aside, figure, footer, header, hgroup,
+article, aside, figure, footer, header, hgroup,
 menu, nav, section{ 
     display: block; 
 }
+
+.wrappingDiv {
+    width: 96%;
+    text-align: center;
+}
+.memory{
+    padding-left: 13%;
+}
+.smallMemory{
+    margin-left: 23%;
+}
+.memory a{
+    display: block;
+    float: left;
+    margin: 0 4% 0 0;
+}
+.memory img{
+    width: 50px;
+}
+.bigMemory :nth-child(4n+5){
+    clear: left;
+}
+.smallMemory :nth-child(2n+3){
+    clear: left;
+}
+.big, .small{
+    font-family: inherit;
+    font-size: 20px;
+    width: 100px;
+    margin: 2% 1%;
+}
+.big:hover, .small:hover{
+    cursor: pointer;
+}
+
 body{
 	margin: 0;
 	padding: 0;
     background-image: url(../pictures/background.jpg);
-}
-.displayer{
-    position: absolute;
-    top: 30px;
-    left: 400px;
-    padding: 0 0 10px 0;
-    background-color: rgba(0,0,0,0.6);
-    color: white;
-}
-.displayer a{
-    float: right;
 }
 footer img{
     width: 100%;
@@ -104,14 +128,14 @@ footer a:hover{
     float: left;
     overflow: scroll;
 }
-.windowBody div{
+.imgBox{
     margin: 4% 4% 0 0;
     padding: 10px;
     text-align: center;
     background-color: rgba(0,0,0,0.8);
     float: left;
 }
-.windowBody div:hover{
+.imgBox:hover{
     cursor: pointer;
 }
 .windowBottom{

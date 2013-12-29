@@ -2,6 +2,7 @@
 
 var JOCKE = {
     galleryCount: [5, 5],
+    memoryCount: [400, 5],
     bigImagesCount: [200, 50],
     run: function () {
         var atags;
@@ -10,6 +11,10 @@ var JOCKE = {
 
         atags[0].onclick = function () {
             new JOCKE.Gallery();
+            return false;
+        };
+        atags[2].onclick = function () {
+            new JOCKE.memory();
             return false;
         };
     },

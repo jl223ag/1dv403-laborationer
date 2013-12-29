@@ -1,6 +1,6 @@
 "use strict";
 
-var MemoryApp = {
+JOCKE.MemoryApp = {
 
     theArray: [],
     playArray: [],
@@ -10,7 +10,7 @@ var MemoryApp = {
     successCount: 0,
     amountCount: 0,
 
-    init: function () {                
+    init: function () {
         var big, small, board, game;
 
         big = document.querySelector("#big");
@@ -134,4 +134,3 @@ var MemoryApp = {
         MemoryApp.playArray.splice(0, MemoryApp.playArray.length)
     }
 }
-window.onload = MemoryApp.init;
