@@ -51,15 +51,15 @@ JOCKE.CreateWindow = function (text, imagesrc, x, y, count) {
     };
 
     someCssStyles();
-    
-    main.appendChild(aWindow);
-    aWindow.appendChild(windowTop);
+
     windowTop.appendChild(topImg);
     windowTop.appendChild(pTop);
     windowTop.appendChild(aClose);
     windowTop.appendChild(aMin);
+    aWindow.appendChild(windowTop);
     aWindow.appendChild(windowBody);
     aWindow.appendChild(windowBottom);
+    main.appendChild(aWindow);
 
     return [windowBody, windowBottom];
 

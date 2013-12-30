@@ -26,7 +26,7 @@ JOCKE.TheAjax = function (url, imgHolder, callback) {
             }
             var time2 = new Date();
             imgHolder.removeChild(loadImg);
-            imgHolder.innerHTML = "Laddade bilderna på: " + ((time2.getTime() - time.getTime()) / 1000) + "sekunder";
+            imgHolder.innerHTML = "Laddade på: " + ((time2.getTime() - time.getTime()) / 1000) + "sekunder";
         }
     };
 
