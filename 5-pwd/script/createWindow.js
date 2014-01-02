@@ -26,7 +26,7 @@ JOCKE.CreateWindow = function (text, imagesrc, x, y, count) {
     aClose.className = "close";
     aClose.innerHTML = "x";
 
-    aWindow.tabIndex = "1"; // för att focus/blur ska funka
+    aWindow.tabIndex = 0; // för att focus/blur ska funka (men såklart inte i ie >_<)
 
     aWindow.onfocus = function () {
         aWindow.id = "focused";
@@ -34,23 +34,24 @@ JOCKE.CreateWindow = function (text, imagesrc, x, y, count) {
     aWindow.onblur = function () {
         aWindow.id = "";
     };
-    aMin.onclick = function () {
+
+    aMin.onclick = function () { // minimera fönstret
         aWindow.className = "aWindowSmall";
         removeCssStyles();
         return false;
     };
-    aClose.onclick = function () {
+    aClose.onclick = function () { // stäng fönstret
         main.removeChild(aWindow);
         return false;
     };
-    topImg.onclick = function () {
+    topImg.onclick = function () { // förstora minimerat fönster
         if (aWindow.className === "aWindowSmall") {
             aWindow.className = "aWindow";
             someCssStyles();
         }
     };
 
-    someCssStyles();
+    someCssStyles(); // positionera fönstret
 
     windowTop.appendChild(topImg);
     windowTop.appendChild(pTop);
@@ -61,6 +62,8 @@ JOCKE.CreateWindow = function (text, imagesrc, x, y, count) {
     aWindow.appendChild(windowBottom);
     main.appendChild(aWindow);
 
+    aWindow.focus();
+
     return [windowBody, windowBottom];
 
     function someCssStyles() {
@@ -69,7 +72,6 @@ JOCKE.CreateWindow = function (text, imagesrc, x, y, count) {
         aWindow.style.left = count[0] + "px";
         aWindow.style.top = count[1] + "px";
         aWindow.style.bottom = "";
-
     };
 
     function removeCssStyles() {

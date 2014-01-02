@@ -1,9 +1,8 @@
 ﻿"use strict";
 
 var JOCKE = {
-    galleryCount: [5, 5],
-    memoryCount: [400, 5],
-    bigImagesCount: [200, 50],
+    placementCount: [5, 5],
+    bigImagesCount: [400, 5],
     whichRss: 0,
     run: function () {
         var atags;
@@ -36,7 +35,7 @@ var JOCKE = {
             return false;
         };
     },
-    checkPosition: function(countArr, xValue, yValue, resetValueX, resetValueY) {
+    checkPosition: function(countArr, xValue, yValue, resetValueX, resetValueY) { // ser till att fönstren inte hamnar utanför skärmen
         var theWidth, theHeight;
 
         if ((countArr[0] + xValue) >= screen.width) {

@@ -9,10 +9,10 @@ JOCKE.TheAjax = function (url, imgHolder, callback) {
     var time = new Date();
 
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 1) {            
+        if (xhr.readyState === 1) { // laddar...
             imgHolder.appendChild(loadImg);
         }
-        if (xhr.readyState === 4) {
+        if (xhr.readyState === 4) { // laddat klart
             if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
                 if (xhr.responseXML === true) {
                     callback(xhr.responseXML);
@@ -26,7 +26,7 @@ JOCKE.TheAjax = function (url, imgHolder, callback) {
             }
             var time2 = new Date();
             imgHolder.removeChild(loadImg);
-            imgHolder.innerHTML = "Laddade på: " + ((time2.getTime() - time.getTime()) / 1000) + "sekunder";
+            imgHolder.innerHTML = "Laddade på: " + ((time2.getTime() - time.getTime()) / 1000) + " sekunder";
         }
     };
 

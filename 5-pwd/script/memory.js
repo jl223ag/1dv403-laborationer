@@ -3,10 +3,10 @@
 JOCKE.memory = function () {  
     var bodyArr, theArray, playArray, gameCount, playCount, failCount, successCount, amountCount, big, small, board, wrapper, failTag, winTag, htwo;
 
-    bodyArr = JOCKE.CreateWindow("Memory", "pictures/memory.png", 360, 380, JOCKE.memoryCount);
-    JOCKE.memoryCount[0] += 30;
-    JOCKE.memoryCount[1] += 30;
-    JOCKE.memoryCount = JOCKE.checkPosition(JOCKE.memoryCount, 360, 580, 400, 5);
+    bodyArr = JOCKE.CreateWindow("Memory", "pictures/memory.png", 360, 380, JOCKE.placementCount);
+    JOCKE.placementCount[0] += 30;
+    JOCKE.placementCount[1] += 30;
+    JOCKE.placementCount = JOCKE.checkPosition(JOCKE.placementCount, 360, 580, 400, 5);
 
     theArray = [];
     playArray = [];

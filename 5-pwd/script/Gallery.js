@@ -2,16 +2,16 @@
 
 JOCKE.Gallery = function () {
     var bodyArr;
-    bodyArr = JOCKE.CreateWindow("Image viewer", "pictures/gallery.png", 360, 380, JOCKE.galleryCount);
-    JOCKE.galleryCount[0] += 30;
-    JOCKE.galleryCount[1] += 30;
-    JOCKE.galleryCount = JOCKE.checkPosition(JOCKE.galleryCount, 360, 580, 5, 5);    
+    bodyArr = JOCKE.CreateWindow("Image viewer", "pictures/gallery.png", 360, 380, JOCKE.placementCount);
+    JOCKE.placementCount[0] += 30;
+    JOCKE.placementCount[1] += 30;
+    JOCKE.placementCount = JOCKE.checkPosition(JOCKE.placementCount, 360, 580, 5, 5);
 
     new JOCKE.TheAjax("http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/", bodyArr[1], function (data) {
         var images, widths, heights;
 
         images = JSON.parse(data);
-        widths = images.map(function (a) { return a.thumbWidth; });
+        widths = images.map(function (a) { return a.thumbWidth; }); // hämtar ut största bredd å höjd på småbilderna
         heights = images.map(function (a) { return a.thumbHeight; });
         widths.sort();
         heights.sort();
@@ -20,7 +20,7 @@ JOCKE.Gallery = function () {
             displayImages(i);
         }
 
-        function displayImages(nr) {
+        function displayImages(nr) { // bild placeras ut och onclick läggs till
             var main, img, imgBox;
 
             main = document.querySelector("main");
