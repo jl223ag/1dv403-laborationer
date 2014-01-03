@@ -1,25 +1,25 @@
 ﻿"use strict";
 
 JOCKE.labby = function() {
-    var bodyArr, div, p, p2, a, a2, clock, kill;
+    var bodyArr, labcount, messages, msgcount, theDiv, textwall, field, sendmsg, div, p, p2, a, a2, clock, kill;
 
     bodyArr = JOCKE.CreateWindow("Labby mezzage", "pictures/labby.png", 360, 380, JOCKE.placementCount);
     JOCKE.placementCount[0] += 30;
     JOCKE.placementCount[1] += 30;
     JOCKE.placementCount = JOCKE.checkPosition(JOCKE.placementCount, 360, 580, 5, 5);
 
-    var labcount = 0;
-    var messages = []; // arrayen som håller meddelandena
-    var msgcount = document.createElement("p");
+    labcount = 0;
+    messages = []; // arrayen som håller meddelandena
+    msgcount = document.createElement("p");
     msgcount.className = "numberMessages";
     msgcount.innerHTML = "Antal meddelanden: 0";
 
-    var theDiv = document.createElement("div");    
-    var textwall = document.createElement("div");
+    theDiv = document.createElement("div");    
+    textwall = document.createElement("div");
     theDiv.className = "labbymezzage";
     textwall.className = "textWall";
 
-    var field = document.createElement("textarea");
+    field = document.createElement("textarea");
     field.rows = 5;
     field.cols = 500;
     field.className = "theText";
@@ -31,7 +31,7 @@ JOCKE.labby = function() {
         }
     };
 
-    var sendmsg = document.createElement("button"); // skapa skickaknapp
+    sendmsg = document.createElement("button"); // skapa skickaknapp
     sendmsg.innerHTML = "skriv";
     sendmsg.className = "abutton";
 
@@ -42,7 +42,8 @@ JOCKE.labby = function() {
     bodyArr[0].appendChild(theDiv);
 
     sendmsg.onclick = function () {
-        var mess = new JOCKE.Message();
+        var mess;
+        mess = new JOCKE.Message();
         mess.getText = field.value;
         mess.getDate = new Date();
         messages.push(mess); // in med objektet i arrayen
@@ -86,7 +87,8 @@ JOCKE.labby = function() {
 
         a2.href = "#";
         a2.onclick = function () {
-            var time = messages[messageId].getDateText(messages[messageId].getDate);
+            var time;
+            time = messages[messageId].getDateText(messages[messageId].getDate);
             alert(time);
             return false;
         };

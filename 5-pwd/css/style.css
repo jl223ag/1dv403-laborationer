@@ -189,15 +189,13 @@ footer a:hover{
     cursor: pointer;
 }
 .windowBottom{
-    height: 30px;
+    height: 26px;
     width: 96%;
     padding-left: 4%;
+    padding-top: 4px;
     float: left;
     background-color: rgba(0,0,0,0.8);
     color: white;
-}
-.windowBottom img{
-    margin-top: 6px;
 }
 
 
