@@ -2,6 +2,51 @@ article, aside, figure, footer, header, hgroup,
 menu, nav, section{ 
     display: block; 
 }
+.abutton{
+    width: 30%;
+    height: 30px;
+    font-size: 1em;
+    font-family: inherit;
+}
+.labbymezzage{
+    background-color: lightblue;
+    width: 96%;
+}
+.labbymezzage textarea{
+    width: 98%;
+    font-family: inherit;
+    font-size: inherit;
+    resize: none;
+}
+.textWall div .textTime{
+    font-size: 0.7em;
+    text-align: right;
+    width: 100%;
+    margin: 0;
+}
+.textWall div {
+    padding: 0 1%;
+    margin-bottom: 5px;
+    background-color: lightgreen;
+    text-align: left;
+    border: 1px solid green;
+    box-shadow: 0 0 5px green;
+    float: left;
+    width: 97%;
+}
+.textWall div p{
+    margin: 10px 0 0 0;
+    float: left;
+    width: 82%;
+}
+.textWall div a{
+    float: left;
+    width: 7%;
+    margin: 7px 5px 0 0;
+}
+.textWall img{
+    width: 25px;
+}
 .rssFeed{
     padding: 4% 4% 4% 0;
 }
@@ -90,8 +135,8 @@ footer a:hover{
     position: fixed;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
-    z-index: 1;
     cursor: pointer;
+    z-index: 1;
 }
 .aWindowSmall .windowTop img{
     width: 60px;

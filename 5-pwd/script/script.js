@@ -2,7 +2,7 @@
 
 var JOCKE = {
     placementCount: [5, 5],
-    bigImagesCount: [400, 5],
+    bigImagesCount: [500, 5],
     whichRss: 0,
     run: function () {
         var atags;
@@ -12,7 +12,7 @@ var JOCKE = {
         atags[0].onclick = function () { // galleriet
             new JOCKE.Gallery();
             return false;
-        };
+        };        
 
         atags[1].onclick = function () { // rss
             JOCKE.whichRss++;
@@ -34,7 +34,13 @@ var JOCKE = {
             new JOCKE.memory();
             return false;
         };
+
+        atags[3].onclick = function () { // labbymezzage
+            new JOCKE.labby();
+            return false;
+        };
     },
+
     checkPosition: function(countArr, xValue, yValue, resetValueX, resetValueY) { // ser till att fönstren inte hamnar utanför skärmen
         var theWidth, theHeight;
 

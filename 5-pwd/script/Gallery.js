@@ -43,7 +43,7 @@ JOCKE.Gallery = function () {
                 bigImg = document.createElement("img");
                 JOCKE.bigImagesCount[0] += 30;
                 JOCKE.bigImagesCount[1] += 30;
-                JOCKE.bigImagesCount = JOCKE.checkPosition(JOCKE.bigImagesCount, (images[nr].width + 30), (images[nr].height + 220), 200, 50);
+                JOCKE.bigImagesCount = JOCKE.checkPosition(JOCKE.bigImagesCount, (images[nr].width + 30), (images[nr].height + 220), 500, 50);
                 bigImg.src = images[nr].URL;
                 photo[0].appendChild(bigImg);
             };

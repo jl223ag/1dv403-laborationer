@@ -1,7 +1,10 @@
 ﻿"use strict";
 
 JOCKE.CreateWindow = function (text, imagesrc, x, y, count) {
-    var main, aWindow, windowTop, windowBody, windowBottom, topImg, pTop, pBottom, aMin, aClose;
+    var main, aWindow, windowTop, windowBody, windowBottom, topImg, pTop, pBottom, aMin, aClose, theLeft, theRight;
+
+    theLeft = count[0]; // sparar undan fönstrets koordinater
+    theRight = count[1];
 
     main = document.querySelector("main");
     aWindow = document.createElement("div");
@@ -26,21 +29,17 @@ JOCKE.CreateWindow = function (text, imagesrc, x, y, count) {
     aClose.className = "close";
     aClose.innerHTML = "x";
 
-    aWindow.tabIndex = 0; // för att focus/blur ska funka (men såklart inte i ie >_<)
+    aWindow.tabIndex = 0; // för att focus/blur ska funka
 
-    aWindow.onfocus = function () {
-        aWindow.id = "focused";
-    };
-    aWindow.onblur = function () {
-        aWindow.id = "";
-    };
+    aWindow.addEventListener("focus", function () { aWindow.id = "focused"; }, true); // capture istället för bubbling
+    aWindow.addEventListener("blur", function () { aWindow.id = ""; }, true);
 
     aMin.onclick = function () { // minimera fönstret
         aWindow.className = "aWindowSmall";
         removeCssStyles();
         return false;
     };
-    aClose.onclick = function () { // stäng fönstret
+    aClose.onclick = function () { // stäng fönstret (tror garbage collectorn tar bort alla eventhandlers.. men är osäker)
         main.removeChild(aWindow);
         return false;
     };
@@ -62,22 +61,20 @@ JOCKE.CreateWindow = function (text, imagesrc, x, y, count) {
     aWindow.appendChild(windowBottom);
     main.appendChild(aWindow);
 
-    aWindow.focus();
-
     return [windowBody, windowBottom];
 
     function someCssStyles() {
         aWindow.style.width = x + "px";
         aWindow.style.height = y + "px";
-        aWindow.style.left = count[0] + "px";
-        aWindow.style.top = count[1] + "px";
+        aWindow.style.left = theLeft + "px";
+        aWindow.style.top = theRight + "px";
         aWindow.style.bottom = "";
     };
 
     function removeCssStyles() {
         aWindow.style.width = "60px";
         aWindow.style.height = "60px";
-        aWindow.style.left = "150px";
+        aWindow.style.left = "210px";
         aWindow.style.bottom = "-30px";
         aWindow.style.top = "";
     };
