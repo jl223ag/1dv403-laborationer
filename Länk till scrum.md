@@ -3,4 +3,6 @@
 
 Laborationer i kursen genomförs i en fork av detta repro.
 
-test så det funkar
+länk till scrum:
+
+https://github.com/jl223ag/Scrum
