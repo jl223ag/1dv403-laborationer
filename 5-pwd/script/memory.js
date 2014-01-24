@@ -56,7 +56,7 @@ JOCKE.memory = function () {
     start(4, 4);
 
     function start(num1, num2) {
-        theArray = RandomGenerator.getPictureArray(num1, num2);
+        theArray = JOCKE.RandomGenerator.getPictureArray(num1, num2);
         makeTable();
     };
 

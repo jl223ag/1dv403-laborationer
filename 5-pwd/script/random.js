@@ -1,6 +1,6 @@
 "use strict";
 
-var RandomGenerator = {
+JOCKE.RandomGenerator = {
 	
 	/*
 		Denna metod tar antalet rader och columner som inparameter.

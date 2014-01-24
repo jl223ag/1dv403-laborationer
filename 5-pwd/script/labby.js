@@ -93,25 +93,26 @@ JOCKE.labby = function() {
 
         clock.src = "pictures/clock.png";
         kill.src = "pictures/x.png";
-
-        textwall.appendChild(div);
+        
         div.appendChild(p);
         div.appendChild(a2);
         div.appendChild(a);
-        div.appendChild(p2);
+        div.appendChild(p2);        
 
         p.innerHTML = messages[messageId].getHTMLText(messages[messageId].getText);
         a2.appendChild(clock);
         a.appendChild(kill);
         p2.className = "textTime";
         p2.innerHTML = messages[messageId].getDate.toLocaleTimeString();
+
+        textwall.appendChild(div);
     };
 
     function renderMessages() {
 
         textwall.innerHTML = ""; // tar bort alla meddelanden
 
-        for (var i = 0; i < messages.length; i++) { // skriver ut dem på nytt
+        for (var i = (messages.length - 1); i >= 0; i--) { // skriver ut dem på nytt (baklänges så senaste hamnar högst upp)
             renderMessage(i);
         }
     };

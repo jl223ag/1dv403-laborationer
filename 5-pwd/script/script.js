@@ -1,7 +1,6 @@
 ﻿"use strict";
 
 var JOCKE = {
-    count: 0,
     whichRss: 0,
 
     run: function () {
@@ -45,13 +44,12 @@ var JOCKE = {
 
         var theWindows = document.getElementsByClassName("aWindow");
         var pattern = /\d+/;
-        var i = 0;
         var leftPos = 0;
         var topPos = 0;        
         var rightCount = 5;
         var bottomCount = 5;
 
-        while (i < theWindows.length) {
+        for (var i = 0; i < theWindows.length; i++) {
             theWindows[i].style.top = (5 + (topPos * 30)) + "px";
             theWindows[i].style.left = (5 + (leftPos * 30)) + "px";
 
@@ -66,7 +64,6 @@ var JOCKE = {
                 rightCount = 0;
             }
 
-            i++;
             topPos++;
             leftPos++;
             bottomCount += 30;
