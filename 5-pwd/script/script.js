@@ -1,9 +1,9 @@
 ﻿"use strict";
 
 var JOCKE = {
-    placementCount: [5, 5],
-    bigImagesCount: [500, 5],
+    count: 0,
     whichRss: 0,
+
     run: function () {
         var atags;
 
@@ -41,20 +41,36 @@ var JOCKE = {
         };
     },
 
-    checkPosition: function(countArr, xValue, yValue, resetValueX, resetValueY) { // ser till att fönstren inte hamnar utanför skärmen
-        var theWidth, theHeight;
+    checkPosition: function () { // ser till så fönstren lägger sig snyggt
 
-        if ((countArr[0] + xValue) >= screen.width) {
-            theWidth = resetValueX;
-            theHeight = resetValueY;
-            return [theWidth, theHeight];
-        }
-        else if ((countArr[1] + yValue) >= screen.height) {
-            theHeight = resetValueY;
-            return [countArr[0], theHeight];
-        }
-        else {
-            return countArr;
+        var theWindows = document.getElementsByClassName("aWindow");
+        var pattern = /\d+/;
+        var i = 0;
+        var leftPos = 0;
+        var topPos = 0;        
+        var rightCount = 5;
+        var bottomCount = 5;
+
+        while (i < theWindows.length) {
+            theWindows[i].style.top = (5 + (topPos * 30)) + "px";
+            theWindows[i].style.left = (5 + (leftPos * 30)) + "px";
+
+            if ((+(theWindows[i].style.height.match(pattern)) + 200 + bottomCount) >= screen.height) { // så det inte hamnar under botten
+                topPos = 0;
+                bottomCount = 0;
+            }
+
+            if ((+(theWindows[i].style.width.match(pattern)) + 30 + rightCount) >= screen.width) { // inte utanför sidan
+                leftPos = 0;
+                topPos = 0;
+                rightCount = 0;
+            }
+
+            i++;
+            topPos++;
+            leftPos++;
+            bottomCount += 30;
+            rightCount += 30;
         }
     }
 };

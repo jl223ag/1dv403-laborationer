@@ -2,10 +2,8 @@
 
 JOCKE.Gallery = function () {
     var bodyArr;
-    bodyArr = JOCKE.CreateWindow("Image viewer", "pictures/gallery.png", 360, 380, JOCKE.placementCount);
-    JOCKE.placementCount[0] += 30;
-    JOCKE.placementCount[1] += 30;
-    JOCKE.placementCount = JOCKE.checkPosition(JOCKE.placementCount, 360, 580, 5, 5);
+    bodyArr = JOCKE.CreateWindow("Image viewer", "pictures/gallery.png", 360, 380);
+    JOCKE.checkPosition();
 
     new JOCKE.TheAjax("http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/", bodyArr[1], function (data) {
         var images, widths, heights;
@@ -39,11 +37,9 @@ JOCKE.Gallery = function () {
             imgBox.onclick = function () {
                 var photo, bigImg;
 
-                photo = JOCKE.CreateWindow("Image viewer", "pictures/gallery.png", (images[nr].width + 40), (images[nr].height + 22), JOCKE.bigImagesCount);
+                photo = JOCKE.CreateWindow("Image viewer", "pictures/gallery.png", (images[nr].width + 40), (images[nr].height + 22));
+                JOCKE.checkPosition();
                 bigImg = document.createElement("img");
-                JOCKE.bigImagesCount[0] += 30;
-                JOCKE.bigImagesCount[1] += 30;
-                JOCKE.bigImagesCount = JOCKE.checkPosition(JOCKE.bigImagesCount, (images[nr].width + 30), (images[nr].height + 220), 500, 50);
                 bigImg.src = images[nr].URL;
                 photo[0].appendChild(bigImg);
             };

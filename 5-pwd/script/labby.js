@@ -3,10 +3,8 @@
 JOCKE.labby = function() {
     var bodyArr, labcount, messages, msgcount, theDiv, textwall, field, sendmsg, div, p, p2, a, a2, clock, kill;
 
-    bodyArr = JOCKE.CreateWindow("Labby mezzage", "pictures/labby.png", 360, 380, JOCKE.placementCount);
-    JOCKE.placementCount[0] += 30;
-    JOCKE.placementCount[1] += 30;
-    JOCKE.placementCount = JOCKE.checkPosition(JOCKE.placementCount, 360, 580, 5, 5);
+    bodyArr = JOCKE.CreateWindow("Labby mezzage", "pictures/labby.png", 360, 380);
+    JOCKE.checkPosition();
 
     labcount = 0;
     messages = []; // arrayen som håller meddelandena

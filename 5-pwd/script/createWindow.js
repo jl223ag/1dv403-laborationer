@@ -1,10 +1,7 @@
 ﻿"use strict";
 
-JOCKE.CreateWindow = function (text, imagesrc, x, y, count) {
-    var main, aWindow, windowTop, windowBody, windowBottom, topImg, pTop, pBottom, aMin, aClose, theLeft, theRight;
-
-    theLeft = count[0]; // sparar undan fönstrets koordinater
-    theRight = count[1];
+JOCKE.CreateWindow = function (text, imagesrc, theWidth, theHeight) {
+    var main, aWindow, windowTop, windowBody, windowBottom, topImg, pTop, pBottom, aMin, aClose;
 
     main = document.querySelector("main");
     aWindow = document.createElement("div");
@@ -31,24 +28,11 @@ JOCKE.CreateWindow = function (text, imagesrc, x, y, count) {
 
     aWindow.tabIndex = 0; // för att focus/blur ska funka
 
-    aWindow.addEventListener("focus", function () { aWindow.id = "focused"; }, true); // capture istället för bubbling
-    aWindow.addEventListener("blur", function () { aWindow.id = ""; }, true);
-
-    aMin.onclick = function () { // minimera fönstret
-        aWindow.className = "aWindowSmall";
-        removeCssStyles();
-        return false;
-    };
-    aClose.onclick = function () { // stäng fönstret (tror garbage collectorn tar bort alla eventhandlers.. men är osäker)
-        main.removeChild(aWindow);
-        return false;
-    };
-    topImg.onclick = function () { // förstora minimerat fönster
-        if (aWindow.className === "aWindowSmall") {
-            aWindow.className = "aWindow";
-            someCssStyles();
-        }
-    };
+    aWindow.addEventListener("focus", theFocus, true); // capture istället för bubbling
+    aWindow.addEventListener("blur", theBlur, true);
+    aMin.addEventListener("click", theMin, false);
+    topImg.addEventListener("click", theMax, false);
+    aClose.addEventListener("click", theClose, false);
 
     someCssStyles(); // positionera fönstret
 
@@ -61,13 +45,12 @@ JOCKE.CreateWindow = function (text, imagesrc, x, y, count) {
     aWindow.appendChild(windowBottom);
     main.appendChild(aWindow);
 
+    aWindow.focus();
     return [windowBody, windowBottom];
 
-    function someCssStyles() {
-        aWindow.style.width = x + "px";
-        aWindow.style.height = y + "px";
-        aWindow.style.left = theLeft + "px";
-        aWindow.style.top = theRight + "px";
+    function someCssStyles() { //---------------------------------------------------- css
+        aWindow.style.width = theWidth + "px";
+        aWindow.style.height = theHeight + "px";
         aWindow.style.bottom = "";
     };
 
@@ -77,5 +60,30 @@ JOCKE.CreateWindow = function (text, imagesrc, x, y, count) {
         aWindow.style.left = "210px";
         aWindow.style.bottom = "-30px";
         aWindow.style.top = "";
+    };
+
+    function theFocus() { aWindow.id = "focused"; }; //---------------------------------------------------- event handlers
+
+    function theBlur() { aWindow.id = ""; };
+
+    function theMin() { aWindow.className = "aWindowSmall"; removeCssStyles(); JOCKE.checkPosition(); return false; }; // minimera fönstret
+
+    function theMax() { // förstora minimerat fönster
+        if (aWindow.className === "aWindowSmall") {
+            aWindow.className = "aWindow";
+            someCssStyles();
+            JOCKE.checkPosition();
+        }
+    };
+
+    function theClose() { // stäng fönstret och ta bort alla event handlers
+        aWindow.removeEventListener("focus", theFocus, true);
+        aWindow.removeEventListener("focus", theBlur, true);
+        aMin.removeEventListener("click", theMin, false);
+        topImg.removeEventListener("click", theMax, false);
+        aClose.removeEventListener("click", theClose, false);
+        main.removeChild(aWindow);
+        JOCKE.checkPosition();
+        return false;
     };
 };
